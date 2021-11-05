@@ -1,30 +1,24 @@
-import React, { CSSProperties } from 'react';
-import logo from './logo.svg';
-import {MapContainer, TileLayer} from 'react-leaflet'
 import './App.css';
-import Map from './Map';
+import Sidebar from './components/Sidebar';
+import { Outlet } from "react-router-dom";
+
+import styled from 'styled-components'
+
+const AppWrapper = styled.div`
+  display: grid;
+  height: 100vh;
+  grid-template-areas: "sidebar main sidebar_right";
+  grid-template-columns: 200px 1fr 50px;
+`
 
 function App() {
   return (
-    <div className="App">
-      
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Map/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      
-    </div>
+    <AppWrapper
+      className="App"
+    >
+      <Sidebar />
+      <Outlet />
+    </AppWrapper>
   );
 }
 
