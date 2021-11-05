@@ -1,8 +1,8 @@
 import React, { CSSProperties } from 'react';
 import logo from './logo.svg';
-import {MapContainer, TileLayer} from 'react-leaflet'
 import './App.css';
 import Map from './Map';
+import AnimatedPoint from './AnimatedPoint';
 
 function App() {
   return (

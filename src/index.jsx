@@ -3,6 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import mapboxgl from "mapbox-gl";
+import { StaticMap } from "react-map-gl";
+require('dotenv').config()
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
+mapboxgl.workerClass = require("worker-loader!maplibre-gl/dist/maplibre-gl-csp-worker").default;
+
 
 ReactDOM.render(
   <React.StrictMode>
