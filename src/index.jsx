@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import mapboxgl from "mapbox-gl";
 import { StaticMap } from "react-map-gl";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Insights from './routes/Inisghts'
+import Map from './components/Map';
 require('dotenv').config()
 
 // @ts-ignore
@@ -14,7 +17,14 @@ mapboxgl.workerClass = require("worker-loader!maplibre-gl/dist/maplibre-gl-csp-w
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/" element={<Insights />} />
+          <Route path="local" element={<Map />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
