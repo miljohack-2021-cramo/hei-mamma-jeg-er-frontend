@@ -1,9 +1,9 @@
-import Map from '../components/Map';
+import HeatMap from '../components/heatmap/HeatMap';
 
 const LocalEnvironment = () => {
   return (
     <div>
-      <Map />
+      <HeatMap />
     </div>
   );
 }
