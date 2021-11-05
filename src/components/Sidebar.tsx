@@ -9,7 +9,7 @@ const SidebarWrapper = styled.div`
   row-gap: 20px;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px;
+  padding-top: 50px;
 `
 
 

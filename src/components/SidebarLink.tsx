@@ -26,8 +26,8 @@ const NavIcon = styled.div`
   filter: drop-shadow(0 0 0.75rem black);
   background-color: hsl(0, 0%, 16%);
   place-self: center;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
   color: white;
   &:hover {
     background-color: hsl(0, 0%, 20%);
@@ -40,6 +40,7 @@ const NavIcon = styled.div`
 
 const NavName = styled.div`
   color: #A7A8A9;
+  font-size: 0.8rem;
 `
 
 const SidebarLink = ({route, name, icon}: SidebarLinkProps) => {
@@ -47,7 +48,7 @@ const SidebarLink = ({route, name, icon}: SidebarLinkProps) => {
     <SidebarLinkWrapper>
       <StyledNavLink to={route}>
         <NavIcon>
-          <Icon icon={icon} size={70} color="currentColor" /> 
+          <Icon icon={icon} size={50} color="currentColor" /> 
         </NavIcon>
         <NavName>
           {name}
