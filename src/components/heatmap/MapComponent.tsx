@@ -14,7 +14,7 @@ type MapProps = {
 const MapComponent: React.FC<MapProps> = ({data, layer, position}) => {
 
   const [viewport, setViewport] = useState<InteractiveMapProps>({
-    width: 400,
+    width: '100%',
     height: 400,
     latitude: position.latitude,
     longitude: position.longitude,
