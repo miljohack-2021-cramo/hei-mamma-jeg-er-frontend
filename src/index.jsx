@@ -7,7 +7,7 @@ import mapboxgl from "mapbox-gl";
 import { StaticMap } from "react-map-gl";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Insights from './routes/Inisghts'
-import Map from './components/Map';
+import Map from './components/heatmap/Map';
 require('dotenv').config()
 
 // @ts-ignore

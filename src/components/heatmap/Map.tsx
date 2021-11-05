@@ -58,13 +58,13 @@ function Map() {
         ['heatmap-density'],
         'rgba(236,222,239,0)',
         0.2,
-        'rgb(208,209,230)',
+        '#F1CAC1',
         0.4,
-        'rgb(166,189,219)',
+        '#DC9584',
         0.6,
-        'rgb(103,169,207)',
+        '#CA6147',
         0.8,
-        'rgb(28,144,153)'
+        '#B92C0A'
       ],
       // increase radius as zoom increases
       'heatmap-radius': [
@@ -91,14 +91,8 @@ function Map() {
     }
 
   }
-  const altHeatmapLayer: HeatmapLayer & LayerProps = { ...heatmapLayer, ...{ paint: { 'heatmap-color': "red" } } }
 
   const [points, setPoints] = useState<GeoJSON.FeatureCollection>(heatmapgeojson)
-  const [style, setStyle] = useState(heatmapLayer)
-
-  useEffect(() => {
-    console.log(points)
-  }, [points])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -118,7 +112,7 @@ function Map() {
         onViewportChange={(nextViewport: React.SetStateAction<InteractiveMapProps>) => setViewport(nextViewport)}
       >
         <Source id="heatmap" type="geojson" data={points}>
-          <Layer {...style} />
+          <Layer {...heatmapLayer} />
         </Source>
       </ReactMapGL>
       <button onClick={() => setPoints({
