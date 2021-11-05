@@ -7,7 +7,8 @@ import mapboxgl from "mapbox-gl";
 import { StaticMap } from "react-map-gl";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Insights from './routes/Inisghts'
-import Map from './components/heatmap/Map';
+import MapComponent from './components/heatmap/MapComponent';
+import HeatMap from './components/heatmap/HeatMap';
 require('dotenv').config()
 
 // @ts-ignore
@@ -21,7 +22,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="/" element={<Insights />} />
-          <Route path="local" element={<Map />} />
+          <Route path="local" element={<HeatMap />} />
         </Route>
       </Routes>
     </BrowserRouter>
