@@ -14,5 +14,8 @@ export const TRANSLATIONS_EN = {
     peopleAtHome: "People at home",
     peopleAtWork: "People at work",
     slower: "Slower",
-    faster: "Faster"
+    faster: "Faster",
+    peopleAffected: "People affected by high noise",
+    lastDay: "In the last day",
+    lastWeek: "In the last week",
 } 

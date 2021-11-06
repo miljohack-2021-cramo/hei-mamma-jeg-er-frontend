@@ -11,9 +11,10 @@ const LocalEnvironmentWrapper = styled.div`
   grid-template-areas:
     "header header"
     "noise dust"
-    "map map";
+    "map map"
+    "lastDay lastWeek";
   gap: 40px;
-  grid-template-rows: 100px min-content auto;
+  grid-template-rows: 100px min-content 600px auto;
   grid-template-columns: 1fr 1fr;
 `
 
@@ -27,6 +28,12 @@ const DustBox = styled(Box)`
 
 const MapBox = styled(Box)`
   grid-area: map;
+`
+const DayBox = styled(Box)`
+  grid-area: lastDay;
+`
+const WeekBox = styled(Box)`
+  grid-area: lastWeek;
 `
 
 const LocalHeader = styled.div`
@@ -74,6 +81,20 @@ const LocalEnvironment = () => {
         <h2>{t('noiseMap')}</h2>
         <HeatMap />
       </MapBox>
+      <DayBox>
+        <MeasurementType>{t('lastDay')}</MeasurementType>
+        <MeasurementName>{t('peopleAffected')}</MeasurementName>
+        <Measurement>
+          <Value>35</Value>
+        </Measurement>
+      </DayBox>
+      <WeekBox>
+        <MeasurementType>{t('lastWeek')}</MeasurementType>
+        <MeasurementName>{t('peopleAffected')}</MeasurementName>
+        <Measurement>
+          <Value>102</Value>
+        </Measurement>
+      </WeekBox>
     </LocalEnvironmentWrapper>
   );
 }

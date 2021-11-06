@@ -130,22 +130,40 @@ export default function HeatMap() {
     }, [play, sliderValue, speed]);
 
     return (
-        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column" }} id="hellomamma">
+        <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", position: "relative"}} id="hellomamma">
             <div style={{ display: 'flex', height: "100%" }}>
                 <MapComponent data={data} layer={heatmapLayer} position={{ latitude: 59.91482322866911, longitude: 10.786977764774699 }} zoom={14} />
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h2 style={{ marginBottom: 0 }}>{t('peopleAtHome')}</h2>
-                    <div style={{ width: "10em", height: "10em", backgroundColor: Colors.sidebarColor, color: "whitesmoke", display: 'flex' }}>
-                        <div style={{ width: "100%", height: "fitContent", alignSelf: "center", textAlign: "center" }}>
+                <div style={{ display: 'flex', paddingLeft: '10px', flexDirection: 'row', gap: '50px',position: 'absolute', top: "450px"}}>
+                    <div style={{background: "white", padding:"20px", width: "200px"}}>
+                        <span style={{marginRight: "5px"}}>
+                            People affected: 
+                        </span>
+                        <span>
                             {Math.ceil(data.features.map((it) => it.properties.Max_Sum_po).reduce((prev, cur) => Math.max(prev, cur), 0))}
-                        </div>
+                        </span>
                     </div>
-                    <h2 style={{ marginBottom: 0 }}>{t('peopleAtWork')}</h2>
+                    <div style={{background: "white", padding:"20px", width: "200px"}}>
+                        <span style={{marginRight: "5px"}}>
+                            Employees affected: 
+                        </span>
+                        <span>
+                            {Math.ceil(data.features.map((it) => it.properties.Max_Sum_em).reduce((prev, cur) => Math.max(prev, cur), 0))}
+                        </span>
+                    </div>
+                    {/*
                     <div style={{ width: "10em", height: "10em", backgroundColor: Colors.sidebarColor, color: "whitesmoke", display: 'flex' }}>
+                        <span style={{ marginBottom: 0 }}>{t('peopleAtHome')}: </span>
+                        <span style={{ width: "100%", height: "fitContent", alignSelf: "center", textAlign: "center" }}>
+                            {Math.ceil(data.features.map((it) => it.properties.Max_Sum_po).reduce((prev, cur) => Math.max(prev, cur), 0))}
+                        </span>
+                    </div>
+                    <div style={{ width: "10em", height: "10em", backgroundColor: Colors.sidebarColor, color: "whitesmoke", display: 'flex' }}>
+                        <h2 style={{ marginBottom: 0 }}>{t('peopleAtWork')}</h2>
                         <div style={{ width: "100%", height: "fitContent", alignSelf: "center", textAlign: "center" }}>
                             {Math.ceil(data.features.map((it) => it.properties.Max_Sum_em).reduce((prev, cur) => Math.max(prev, cur), 0))}
                         </div>
                     </div>
+                    */}
                 </div>
             </div>
             <div>

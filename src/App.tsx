@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 const AppWrapper = styled.div`
   display: grid;
-  height: 100vh;
+  height: 100%;
   grid-template-areas: "sidebar main sidebar_right";
   grid-template-columns: 150px 1fr 50px;
 `

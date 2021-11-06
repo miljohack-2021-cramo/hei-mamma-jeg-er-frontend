@@ -7,7 +7,6 @@ export const Box = styled.div`
 `
 
 export const Header = styled.div`
-  grid-area: header;
   h1 {
     margin-bottom: 10px;
   }

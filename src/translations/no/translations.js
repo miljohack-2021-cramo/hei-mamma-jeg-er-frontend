@@ -14,5 +14,9 @@ export const TRANSLATIONS_NO = {
     peopleAtHome: "Folk hjemme",
     peopleAtWork: "Folk på jobb",
     slower: "Saktere",
-    faster: "Raskere"
+    faster: "Raskere",
+    peopleAffected: "Antall personer påvirket av høy støy",
+    lastDay: "Siste dag",
+    lastWeek: "Siste uke",
+
 };
