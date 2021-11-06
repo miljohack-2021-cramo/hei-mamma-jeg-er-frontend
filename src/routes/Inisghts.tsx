@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Icon from '../components/Icon';
 import ThresholdStatus from '../components/ThresholdStatus';
 import { Box } from '../style'
 

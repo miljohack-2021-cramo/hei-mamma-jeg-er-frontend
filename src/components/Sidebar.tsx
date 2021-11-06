@@ -19,7 +19,22 @@ const Sidebar = () => {
       <SidebarLink 
         route='insights'
         name="Insights"
+        icon='insights'
+      />
+      <SidebarLink
+        route='/safety'
+        name='Safety'
+        icon='safety'
+      />
+      <SidebarLink
+        route='/sustainability'
+        name='Sustainability'
         icon='leaf'
+      />
+      <SidebarLink
+        route='/productivity'
+        name='Productivity'
+        icon='productivity'
       />
       <SidebarLink
         route='/'
