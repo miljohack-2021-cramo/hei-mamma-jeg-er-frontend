@@ -4,6 +4,7 @@ import { LayerProps } from 'react-map-gl';
 import MapComponent from './MapComponent';
 
 import {default as geojsonimport} from '../../data/ensjo_geo.json'
+import SocketComponent from './SocketComponent';
 
 type MyFeatureCollection = {
     type: "FeatureCollection";
@@ -88,14 +89,14 @@ export default function HeatMap() {
             60,
             60,
             90,
-            90
+            100
           ],
           // decrease opacity to transition into the circle layer
           'heatmap-opacity': {
-            default: 1,
+            default: 0.8,
             stops: [
-              [17, 1],
-              [18, 0]
+              [19, 0.8],
+              [20, 0]
             ]
           }
         }
@@ -103,7 +104,7 @@ export default function HeatMap() {
 
     const [data, setData] = useState<GeoJSON.FeatureCollection>(heatmapgeojson)
     const [sliderValue, setSliderValue] = useState<number>(0)
-    const [play, setPlay] = useState<boolean>(false)
+    const [play, setPlay] = useState<boolean>(true)
 
     const getPointsFromSlider = () => {
         var point = geojson.features[sliderValue]
@@ -118,32 +119,26 @@ export default function HeatMap() {
         getPointsFromSlider()
     }, [sliderValue])
 
+    const moveSlider = () => {
+        setSliderValue(sliderValue + 1)
+    }
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            setSliderValue(sliderValue+1)
-            }, 1000);
-        
+        const interval = setInterval((play) ? moveSlider : () => {}, 100);
+
         return () => clearInterval(interval);
       }, [play, sliderValue]);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         var pointCopy: GeoJSON.FeatureCollection = JSON.parse(JSON.stringify(data))
-    //         pointCopy.features = pointCopy.features.map((it) => { return { type: 'Feature', properties: { dbh: Math.random() * 120 }, geometry: it.geometry } }
-    //         )
-    //         setData(pointCopy)
-    //     }, 2000);
-    //     return () => clearInterval(interval);
-    // }, []);
-
     return (    
-        <div>
+        <div style={{width:"100%"}}>
             <MapComponent data={data} layer={heatmapLayer} position={{latitude: 59.91482322866911, longitude: 10.786977764774699}}/>
             {geojson.features[0].properties.Time}
             <input type="range" min="0" max={geojson.features.length-1 }  onChange={(e) => setSliderValue(parseInt(e.target.value))}></input>
             {geojson.features[geojson.features.length-1].properties.Time}
             Current date: 
             {geojson.features[sliderValue].properties.Time}
+            {/* <SocketComponent/> */}
+            <button onClick={() => setPlay(!play)}>{(play) ? "Pause" : "Play"}</button>
         </div>
     )
 }
