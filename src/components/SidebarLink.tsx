@@ -11,6 +11,7 @@ type SidebarLinkProps = {
 const SidebarLinkWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
 `
 
 const StyledNavLink = styled(NavLink)`

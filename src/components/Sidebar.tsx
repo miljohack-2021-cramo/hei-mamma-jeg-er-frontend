@@ -17,12 +17,12 @@ const Sidebar = () => {
   return (
     <SidebarWrapper>
       <SidebarLink 
-        route='/'
+        route='insights'
         name="Insights"
         icon='leaf'
       />
       <SidebarLink
-        route='local'
+        route='/'
         name='Local environment'
         icon='building'
       />

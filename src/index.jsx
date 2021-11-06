@@ -4,11 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import mapboxgl from "mapbox-gl";
-import { StaticMap } from "react-map-gl";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Insights from './routes/Inisghts'
-import MapComponent from './components/heatmap/MapComponent';
-import HeatMap from './components/heatmap/HeatMap';
+import LocalEnvironment from './routes/LocalEnvironment'
 require('dotenv').config()
 
 // @ts-ignore
@@ -21,8 +19,8 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/" element={<Insights />} />
-          <Route path="local" element={<HeatMap />} />
+          <Route path="/" element={<LocalEnvironment />} />
+          <Route path="insights" element={<Insights />} />
         </Route>
       </Routes>
     </BrowserRouter>

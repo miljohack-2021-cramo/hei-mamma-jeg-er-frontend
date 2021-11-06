@@ -9,7 +9,7 @@ const AppWrapper = styled.div`
   display: grid;
   height: 100vh;
   grid-template-areas: "sidebar main sidebar_right";
-  grid-template-columns: 200px 1fr 50px;
+  grid-template-columns: 150px 1fr 50px;
 `
 
 function App() {
