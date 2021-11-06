@@ -1,6 +1,9 @@
 import SidebarLink from './SidebarLink';
 import { Colors } from '../theme/colors';
 import styled from 'styled-components'
+import { useTranslation } from "react-i18next";
+import i18n from '../translations/i18n';
+
 
 const SidebarWrapper = styled.div`
   grid-area: sidebar;
@@ -12,33 +15,50 @@ const SidebarWrapper = styled.div`
   padding-top: 50px;
 `
 
+const LanguagePicker = styled.div`
+  display: flex;
+  button {
+    background-color: #727272
+  }
+`
 
+const setNorwegian = () => {
+  i18n.changeLanguage("no");
+}
+const setEnglish= () => {
+  i18n.changeLanguage("en");
+}
 const Sidebar = () => {
+  const { t } = useTranslation();
   return (
     <SidebarWrapper>
+      <LanguagePicker>
+        <button onClick={setNorwegian}>NO</button>
+        <button onClick={setEnglish}>EN</button>
+      </LanguagePicker>
       <SidebarLink 
         route='insights'
-        name="Insights"
+        name={t("insights")}
         icon='insights'
       />
       <SidebarLink
         route='/safety'
-        name='Safety'
+        name={t('safety')}
         icon='safety'
       />
       <SidebarLink
         route='/sustainability'
-        name='Sustainability'
+        name={t('sustainability')}
         icon='leaf'
       />
       <SidebarLink
         route='/productivity'
-        name='Productivity'
+        name={t('productivity')}
         icon='productivity'
       />
       <SidebarLink
         route='/'
-        name='Local environment'
+        name={t('localEnvironment')}
         icon='building'
       />
     </SidebarWrapper>

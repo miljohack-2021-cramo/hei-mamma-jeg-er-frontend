@@ -2,7 +2,8 @@ import { Box } from '../style';
 import HeatMap from '../components/heatmap/HeatMap';
 import styled from 'styled-components'
 import ThresholdStatus from '../components/ThresholdStatus';
-
+import { useTranslation } from "react-i18next";
+import "../translations/i18n";
 
 const LocalEnvironmentWrapper = styled.div`
   display: grid;
@@ -69,32 +70,33 @@ for (let i = 0; i < 20; i++) {
 
 
 const LocalEnvironment = () => {
+  const { t } = useTranslation();
   return (
     <LocalEnvironmentWrapper>
       <Header>
-        <h1>Local environment</h1>
-        <p>How the construction work affects your local environment</p>
+        <h1>{t('localEnvironment')}</h1>
+        <p>{t('localEnvironmentDescription')}</p>
       </Header>
       <NoiseBox>
-        <MeasurementType>Average measurements</MeasurementType>
-        <MeasurementName>Noise</MeasurementName>
+        <MeasurementType>{t('averageMeasurements')}</MeasurementType>
+        <MeasurementName>{t('noise')}</MeasurementName>
         <Measurement>
           <Value>56.5</Value><Unit>dB</Unit>
         </Measurement>
-        <p>This indicates the current noise levels. Levels should not exceed 85 dB over time</p>
+        <p>{t('noiseDescription')}</p>
         <ThresholdStatus />
       </NoiseBox>
       <DustBox>
-        <MeasurementType>Average measurements</MeasurementType>
-        <MeasurementName>Dust concentration</MeasurementName>
+        <MeasurementType>{t('averageMeasurements')}</MeasurementType>
+        <MeasurementName>{t('dust')}</MeasurementName>
         <Measurement>
           <Value>10.47</Value><Unit>ug/m3</Unit>
         </Measurement>
-        <p>Showing the concentration </p>
+        <p>{t('dustDescription')}</p>
         <ThresholdStatus />
       </DustBox>
       <MapBox>
-        <h2>Noise map</h2>
+        <h2>{t('noiseMap')}</h2>
         <HeatMap />
       </MapBox>
     </LocalEnvironmentWrapper>
