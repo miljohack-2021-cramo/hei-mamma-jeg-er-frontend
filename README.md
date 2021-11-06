@@ -1,4 +1,6 @@
 # This is the frontend for the Cramo case at Miljøhack 2021
+Cramo has established a digital ecosystem to handle the increased need for digitalization of construction sites. Our solution extends this ecosystem by estimating the impact of noise on the local environment.
+
 The solution is built with React with [styled-components](https://styled-components.com/) for styling.
 The map is made with [react-map-gl](https://github.com/visgl/react-map-gl).
 
