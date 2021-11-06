@@ -21,6 +21,9 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route path="/" element={<LocalEnvironment />} />
           <Route path="insights" element={<Insights />} />
+          <Route path="productivity" element={<div />} />
+          <Route path="safety" element={<div />} />
+          <Route path="sustainability" element={<div />} />
         </Route>
       </Routes>
     </BrowserRouter>
