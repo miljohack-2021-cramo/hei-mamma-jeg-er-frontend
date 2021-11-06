@@ -1,4 +1,4 @@
-import { Box } from '../style';
+import {Box, Header, Measurement, Value, Unit, MeasurementType, MeasurementName } from '../style';
 import HeatMap from '../components/heatmap/HeatMap';
 import styled from 'styled-components'
 import ThresholdStatus from '../components/ThresholdStatus';
@@ -16,15 +16,6 @@ const LocalEnvironmentWrapper = styled.div`
   grid-template-rows: 100px min-content auto;
   grid-template-columns: 1fr 1fr;
 `
-const Header = styled.div`
-  grid-area: header;
-  h1 {
-    margin-bottom: 10px;
-  }
-  p {
-    margin: 0px;
-  }
-`
 
 const NoiseBox = styled(Box)`
   grid-area: noise;
@@ -37,25 +28,9 @@ const DustBox = styled(Box)`
 const MapBox = styled(Box)`
   grid-area: map;
 `
-const Measurement = styled.div`
-  display: flex;
-  gap: 10px;
-  align-content: flex-end;
-  align-items: flex-end;
-`
-const Value = styled.span`
-  font-size: 2rem;
-  font-weight: 500;
- `
-const Unit = styled.span`
-  font-size: 1.5rem;
-`
-const MeasurementType = styled.div`
-  font-weight: 100;
-  font-size: 0.8rem;
-`
-const MeasurementName = styled.div`
-  font-size: 1.2rem;
+
+const LocalHeader = styled.div`
+  grid-area: header;
 `
 
 const data : any = [];
@@ -73,10 +48,10 @@ const LocalEnvironment = () => {
   const { t } = useTranslation();
   return (
     <LocalEnvironmentWrapper>
-      <Header>
+      <LocalHeader>
         <h1>{t('localEnvironment')}</h1>
         <p>{t('localEnvironmentDescription')}</p>
-      </Header>
+      </LocalHeader>
       <NoiseBox>
         <MeasurementType>{t('averageMeasurements')}</MeasurementType>
         <MeasurementName>{t('noise')}</MeasurementName>
