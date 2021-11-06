@@ -27,6 +27,7 @@ const MapComponent: React.FC<MapProps> = ({data, layer, position, zoom}) => {
       <ReactMapGL
         {...viewport}
         scrollZoom={false}
+        doubleClickZoom={false}
         onViewportChange={(nextViewport: React.SetStateAction<InteractiveMapProps>) => setViewport(nextViewport)}
       >
         <Source id="heatmap" type="geojson" data={data}>

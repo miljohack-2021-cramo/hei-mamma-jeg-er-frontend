@@ -67,13 +67,13 @@ export default function HeatMap() {
                 'step',
                 ['heatmap-density'],
                 'rgba(236,222,239,0)',
-                0.2,
+                0.1,
                 '#F1CAC1',
-                0.4,
+                0.3,
                 '#DC9584',
-                0.6,
-                '#CA6147',
                 0.8,
+                '#CA6147',
+                0.99,
                 '#B92C0A'
             ],
             // increase radius as zoom increases
