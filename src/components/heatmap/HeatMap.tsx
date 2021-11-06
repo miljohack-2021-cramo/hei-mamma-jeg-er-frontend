@@ -2,7 +2,7 @@ import { HeatmapLayer } from 'maplibre-gl';
 import React, { useEffect, useState } from 'react'
 import { LayerProps } from 'react-map-gl';
 import MapComponent from './MapComponent';
-
+import { useTranslation } from "react-i18next";
 import { default as geojsonimport } from '../../data/ensjo_geo.json'
 import SocketComponent from './SocketComponent';
 import { Colors } from '../../theme/colors';
@@ -41,6 +41,8 @@ const getRandomPoint = (existingpoints: GeoJSON.Feature<GeoJSON.Geometry, GeoJSO
 }
 
 export default function HeatMap() {
+
+    const { t } = useTranslation();
 
     const heatmapgeojson: MyFeatureCollection = {
         type: 'FeatureCollection',
@@ -132,13 +134,13 @@ export default function HeatMap() {
             <div style={{ display: 'flex', height: "100%" }}>
                 <MapComponent data={data} layer={heatmapLayer} position={{ latitude: 59.91482322866911, longitude: 10.786977764774699 }} zoom={14} />
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <h2 style={{ marginBottom: 0 }}>Beboere</h2>
+                    <h2 style={{ marginBottom: 0 }}>{t('peopleAtHome')}</h2>
                     <div style={{ width: "10em", height: "10em", backgroundColor: Colors.sidebarColor, color: "whitesmoke", display: 'flex' }}>
                         <div style={{ width: "100%", height: "fitContent", alignSelf: "center", textAlign: "center" }}>
                             {Math.ceil(data.features.map((it) => it.properties.Max_Sum_po).reduce((prev, cur) => Math.max(prev, cur), 0))}
                         </div>
                     </div>
-                    <h2 style={{ marginBottom: 0 }}>Folk på arbeid</h2>
+                    <h2 style={{ marginBottom: 0 }}>{t('peopleAtWork')}</h2>
                     <div style={{ width: "10em", height: "10em", backgroundColor: Colors.sidebarColor, color: "whitesmoke", display: 'flex' }}>
                         <div style={{ width: "100%", height: "fitContent", alignSelf: "center", textAlign: "center" }}>
                             {Math.ceil(data.features.map((it) => it.properties.Max_Sum_em).reduce((prev, cur) => Math.max(prev, cur), 0))}
@@ -148,16 +150,16 @@ export default function HeatMap() {
             </div>
             <div>
                 <div style={{ display: "flex" }}>
-                    <button style={{ width: "5%" }} onClick={() => setPlay(!play)}>{(play) ? "Pause" : "Play"}</button>
-                    <button disabled={speed >= 1000} style={{ width: "5%" }} onClick={() => setSpeed(Math.min(speed * 10, 1000))}>Slower</button>
-                    <button disabled={speed <= 0.001} style={{ width: "5%" }} onClick={() => setSpeed(Math.max(speed / 10, 0.001))}>Faster</button>
+                    <button style={{ width: "5%" }} onClick={() => setPlay(!play)}>{(play) ? "Pause" : "Start"}</button>
+                    <button disabled={speed >= 1000} style={{ width: "5%" }} onClick={() => setSpeed(Math.min(speed * 10, 1000))}>{t('slower')}</button>
+                    <button disabled={speed <= 0.001} style={{ width: "5%" }} onClick={() => setSpeed(Math.max(speed / 10, 0.001))}>{t('faster')}</button>
                     <input type="range" value={sliderValue} min="0" max={geojson.features.length - 1} style={{ width: "84%" }} onChange={(e) => setSliderValue(parseInt(e.target.value))}></input>
                 </div>
                 <div style={{ width: "100%" }}>
                     <span style={{ marginLeft: Math.max(10, Math.min((sliderValue / (geojson.features.length)) * 100, 80)) + "%" }}>{geojson.features[sliderValue].properties.Time}</span>
                 </div>
-                <span style={{ float: "left" }}>{geojson.features[0].properties.Time}</span>
-                <span style={{ float: "right" }}>{geojson.features[geojson.features.length - 1].properties.Time}  </span>
+                {/* <span style={{ float: "left" }}>{geojson.features[0].properties.Time}</span>
+                <span style={{ float: "right" }}>{geojson.features[geojson.features.length - 1].properties.Time}  </span> */}
             </div>
             {/* <SocketComponent/> */}
         </div>

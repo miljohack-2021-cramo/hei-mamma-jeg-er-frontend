@@ -13,6 +13,7 @@ const SidebarWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
+  height: 100%;
 `
 
 const LanguagePicker = styled.div`
